@@ -12,12 +12,11 @@ def compare(request):
     amazon_p=""
     amazon_pr=""
     if request.method =='POST':
-        
+        z= request.POST['brand']
+        y= request.POST['model']
         try:
-            product = request.POST['compare']
-            x= str(product)
-            x="+".join(x.split(" "))
-            flipkart_url="https://www.flipkart.com/search?q="+str(x)+"&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&as-pos=1&as-type=HISTORY"
+            
+            flipkart_url="https://www.flipkart.com/search?q="+str(z)+"%20"+str(y)+"&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&as-pos=1&as-type=HISTORY"
             res= requests.get(flipkart_url)
             soup= bs4.BeautifulSoup(res.content, 'html5lib')
             soupi= soup.find_all('div',class_="_3wU53n")
@@ -29,11 +28,8 @@ def compare(request):
             product_name="NOt Found"
             product_price=""
         try:
-            product = request.POST['compare']        
-            x=product
-            x=x.split(' ')
-            x="%20".join(x)
-            new_url = "https://www.shopclues.com/search?q="+str(x)+"&auto_suggest=1&seq=2&type=keyword&token=Moto%20e&count=10&z=0"
+            
+            new_url = "https://www.shopclues.com/search?q="+str(z)+"%20"+str(y)+"&auto_suggest=1&seq=2&type=keyword&token=Moto%20e&count=10&z=0"
 
             res= requests.get(new_url)
             soup= bs4.BeautifulSoup(res.content, 'html5lib')
@@ -46,11 +42,8 @@ def compare(request):
             shopclues_p="NOt Found"
             shopclues_pr=""
         try:
-            product = request.POST['compare']
-            x=product        
-            x=x.split(" ")
-            x="+".join(x)
-            tata_url="https://www.amazon.in/s?k="+str(x)+"&ref=nb_sb_noss_2"
+            
+            tata_url="https://www.amazon.in/s?k="+str(z)+"%20"+str(y)+"&ref=nb_sb_noss_2"
             header={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'}
             res= requests.get(tata_url,headers = header)
             soup= bs4.BeautifulSoup(res.content, 'html5lib')
