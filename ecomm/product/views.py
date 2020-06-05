@@ -25,8 +25,8 @@ def compare(request):
             product_price = soup.text
 
         except:
-            product_name="NOt Found"
-            product_price=""
+            product_name = "Not Found"
+            product_price = ""
         try:
             
             new_url = "https://www.shopclues.com/search?q="+str(z)+"%20"+str(y)+"&auto_suggest=1&seq=2&type=keyword&token=Moto%20e&count=10&z=0"
@@ -39,8 +39,8 @@ def compare(request):
             shopclues_p = product
             shopclues_pr = data.find('span',class_='p_price').text
         except:
-            shopclues_p="NOt Found"
-            shopclues_pr=""
+            shopclues_p = "Not Found"
+            shopclues_pr = ""
         try:
             
             tata_url="https://www.amazon.in/s?k="+str(z)+"%20"+str(y)+"&ref=nb_sb_noss_2"
@@ -54,8 +54,8 @@ def compare(request):
             price=i.find('span',class_="a-price-whole")
             amazon_pr=price.text
         except:
-            amazon_p="NOt Found"
-            amazon_pr=""    
+            amazon_p = "Not Found"
+            amazon_pr = ""    
 
     
     return render(request, 'base.html',{'product_name':product_name,'product_price':product_price,'shopclues_p':shopclues_p,
