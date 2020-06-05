@@ -70,8 +70,9 @@
         <div class="search-box">
             <form method="POST" >
                 {% csrf_token %}
-                <input class="sear" type="text" maxlength="50" name="compare">
-                <button>Search</button>
+                <input class="sear" type="text" maxlength="50" name="brand" placeholder="Brand">
+                <input class="sear" type="text" maxlength="50" name="model" placeholder="model">
+                <button>Submit</button>
             </form>
         </div>
     </div>
