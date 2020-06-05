@@ -1,0 +1,96 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product compare</title>
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    .container h1{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .container h3{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 300;
+    }
+    .container{
+        
+        text-align: center;
+    }
+    
+    .search-box{
+        border-radius: 10px;
+        border-width: 2px;
+        border-color: rgb(55, 133, 223);
+        margin-top: 2%;
+        background-color: rgb(32, 32, 32);
+        margin-left: 10%;
+        padding-top: 10px;
+        width:80%;
+        height:80px;
+        box-shadow:2px 2px 8px rgb(175, 173, 173);
+    }
+
+    .product p{
+        color: rgb(53, 54, 54);
+        font-weight: 300;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .product{
+        margin-top: 2%;
+        margin-left: 10%;
+        
+    }
+    
+    .single{
+        width: 400px;
+        margin: 10px;
+        transform: translate(2px);
+        -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+        -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+        box-shadow:         3px 3px 5px 6px #ccc;
+        padding-left: 8px;
+        padding-right: 8px;
+        background-color: rgb(255, 246, 246);
+    }
+    .single h3{
+        font-size: 25px;
+        font-weight: 500;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }    
+</style>
+<body >
+    <div class="container">
+        <h1>Compare your product(Some products are not available)</h1>
+        <h3 style="text-decoration-color: cadetblue;">We are really sorry if you didn't get your product</h3>
+        <div class="search-box">
+            <form method="POST" >
+                {% csrf_token %}
+                <input class="sear" type="text" maxlength="50" name="compare">
+                <button>Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="product">
+        <div class="single">
+            <h3>Flipkart</h3>
+            <p>{{product_name}}</p>
+            <p>{{product_price}}</p>
+        </div>
+        <div class="single">
+            <h3>Shopclues</h3>
+            <p>{{shopclues_p}}</p>
+            <p>{{shopclues_pr}}</p>
+        </div>
+        <div class="single">    
+            <h3>Amazon</h3>
+            <p>{{amazon_p}}</p>
+            <p>{{amazon_pr}}</p>
+        </div>    
+    </div>
+</body>
+</html>
